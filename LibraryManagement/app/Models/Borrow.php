@@ -32,6 +32,6 @@ class Borrow extends Model
         return date('d/m/Y', strtotime(datetime: $this->return_date));
     }
     public function getConditionAttribute(){
-        return $this->status == 0 ? 'Đang mượn' : 'Chưa trả';
+        return $this->status == 0 ? 'Đang mượn' : 'Đã trả';
     }
 }

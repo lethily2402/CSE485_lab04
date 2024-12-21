@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Borrow;
 use Illuminate\Http\Request;
 use App\Models\Reader;
 class ReaderController extends Controller
@@ -36,7 +37,7 @@ class ReaderController extends Controller
      */
     public function show(string $id)
     {
-        //
+//
     }
 
     /**

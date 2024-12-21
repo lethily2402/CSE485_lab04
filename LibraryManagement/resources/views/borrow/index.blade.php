@@ -33,7 +33,7 @@
                         <td class="text-start">{{ $each->condition }}</td>
                         <td class="text-center">
                             <div class="d-flex align-items-center justify-content-center gap-2">
-                                <a href="#" class="btn btn-sm btn-outline-primary">
+                                <a href="{{ route("borrows.show", $each->reader_id)}}" class="btn btn-sm btn-outline-primary">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                                 <a href="{{ route("borrows.edit", $each) }}" class="btn btn-sm btn-outline-warning">
