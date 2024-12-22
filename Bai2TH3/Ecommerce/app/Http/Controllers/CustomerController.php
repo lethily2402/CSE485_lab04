@@ -7,12 +7,10 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $customers = Customer::paginate(10);
+        return view('customers.index', ['data' => $customers]);
     }
 
     /**
@@ -20,7 +18,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customers.create');
     }
 
     /**
@@ -28,7 +26,16 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'phone' => 'required|string|max:15',
+            'email' => 'required|email|unique:customers,email',
+        ]);
+
+        Customer::create($request->all());
+
+        return redirect()->route('customers.index')->with('success', 'Customer created successfully.');
     }
 
     /**
@@ -36,7 +43,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        //
+        return view('customers.show', ['customer' => $customer]);
     }
 
     /**
@@ -44,7 +51,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        return view('customers.edit', ['customer' => $customer]);
     }
 
     /**
@@ -52,7 +59,16 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'phone' => 'required|string|max:15',
+            'email' => 'required|email|unique:customers,email,' . $customer->id,
+        ]);
+
+        $customer->update($request->all());
+
+        return redirect()->route('customers.index')->with('success', 'Customer updated successfully.');
     }
 
     /**
@@ -60,6 +76,8 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+
+        return redirect()->route('customers.index')->with('success', 'Customer deleted successfully.');
     }
 }
