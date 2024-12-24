@@ -51,10 +51,11 @@ class BorrowController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id) {}
-    /**
-     * Show the form for editing the specified resource.
-     */
+    public function show(string $id) {
+        $data = Borrow::where("reader_id", "=", $id)->get();
+        return view("borrow.show", compact('data'));
+    }
+    
     public function edit(string $id)
     {
         $borrow = Borrow::find($id);

@@ -42,7 +42,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="borrow_date" class="form-label">Borrow Date</label>
+                                <label for="borrow_date" class="form-label">Ngày mượn sách</label>
                                 <input class="form-control" type="date" name="borrow_date" id="borrow_date" value="{{ $borrow->borrow_date}}">
                             </div>
                             <div class="d-flex justify-content-end mt-4 gap-3">

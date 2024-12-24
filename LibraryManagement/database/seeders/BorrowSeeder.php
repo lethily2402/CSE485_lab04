@@ -21,11 +21,15 @@ class BorrowSeeder extends Seeder
 
         // Create 100 borrow records
         for ($i = 0; $i < 100; $i++) {
+            $borrowDate = $faker->dateTimeBetween('-3 week', '-1 week');
+            $status = $faker->boolean();
+        
             Borrow::create([
                 'book_id' => $faker->randomElement($listBookId),
                 'reader_id' => $faker->randomElement($listReaderId),
-                'borrow_date'=>$faker->dateTime(),
-                'status'=>$faker->boolean()
+                'borrow_date' => $borrowDate,
+                'status' => $status,
+                'return_date' => $status ? $faker->dateTimeBetween($borrowDate, 'now') : null,
             ]);
         }
     }
