@@ -27,5 +27,7 @@ class OrderSeeder extends Seeder
                 'order_date'=>$orderDate
             ]);
         }
+
+        
     }
 }

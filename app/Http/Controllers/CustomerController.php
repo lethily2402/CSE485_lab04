@@ -12,7 +12,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Customer::paginate(10);
+        return view('customers.index', ['data' => $customers]);
     }
 
     /**
@@ -37,6 +38,11 @@ class CustomerController extends Controller
     public function show(Customer $customer)
     {
         //
+    }
+    public function history(string $id)
+    {
+        $customer = Customer::find($id);
+        return view("customers.history", compact('customer'));
     }
 
     /**

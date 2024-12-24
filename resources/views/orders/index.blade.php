@@ -41,4 +41,12 @@
         </div>
     </div>
 </div>
+@if ($data->hasPages())
+            <div class="card-footer">
+                <div class="paginate">
+                    {{-- Đây là phần hiển thị phân trang --}}
+                    {{ $data->links('pagination::bootstrap-5') }}
+                </div>
+            </div>
+        @endif
 @endsection
