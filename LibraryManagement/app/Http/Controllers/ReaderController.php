@@ -22,6 +22,7 @@ class ReaderController extends Controller
     public function create()
     {
         //
+        return view('reader.create');
     }
 
     /**
@@ -29,7 +30,15 @@ class ReaderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'birthday' => 'required|date',
+            'address' => 'required|string|max:255',
+            'phone' => 'required|string|max:15',
+        ]);
+
+        Reader::create($request->all());
+        return redirect()->route('readers.index')->with('success', 'Reader created successfully!');
     }
 
     /**
@@ -37,7 +46,11 @@ class ReaderController extends Controller
      */
     public function show(string $id)
     {
-//
+
+        //
+        $reader = Reader::findOrFail($id);
+        return view('reader.show', ['reader' => $reader]);
+
     }
 
     /**
@@ -45,7 +58,8 @@ class ReaderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $reader = Reader::findOrFail($id);
+        return view('reader.edit', compact('reader'));
     }
 
     /**
@@ -53,7 +67,16 @@ class ReaderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'birthday' => 'required|date',
+            'address' => 'required|string|max:255',
+            'phone' => 'required|string|max:15',
+        ]);
+
+        $reader = Reader::findOrFail($id);
+        $reader->update($request->all());
+        return redirect()->route('readers.index')->with('success', 'Reader updated successfully!');
     }
 
     /**
@@ -61,6 +84,8 @@ class ReaderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $reader = Reader::findOrFail($id);
+        $reader->delete();
+        return redirect()->route('readers.index')->with('success', 'Reader deleted successfully!');
     }
 }
