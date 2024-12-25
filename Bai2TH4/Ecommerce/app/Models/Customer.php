@@ -15,4 +15,9 @@ class Customer extends Model
         'phone',
     ];
     use HasFactory;
+    public $timestamps = false;
+    public function orders()
+    {
+        return $this->HasMany(Order::class);
+    }
 }

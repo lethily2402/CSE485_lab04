@@ -30,6 +30,9 @@
                             <td class="text-start">{{ $each->phone }}</td>
                             <td class="text-start">{{ $each->email }}</td>
                             <td class="text-center">
+                                <a href="{{ route('customers.history', $each) }}" class="btn btn-sm btn-outline-info">
+                                    <i class="fa-solid fa-clock-rotate-left"></i>
+                                </a>
                                 <a href="{{ route('customers.show', $each->id) }}" class="btn btn-sm btn-outline-primary">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>

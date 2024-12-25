@@ -45,7 +45,12 @@ class CustomerController extends Controller
     {
         return view('customers.show', ['customer' => $customer]);
     }
-
+   
+    public function history(string $id)
+    {
+        $customer = Customer::find($id);
+        return view("customers.history", compact('customer'));
+    }
     /**
      * Show the form for editing the specified resource.
      */
