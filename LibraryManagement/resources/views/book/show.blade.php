@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Chi tiết sản phẩm')
+@section('title', 'Xem chi tiết sách')
 
 @section('content')
     <div class="container my-4">
@@ -13,27 +13,30 @@
                                 <div class="row">
                                     <h5 class="h5 card-title border-bottom mb-3">Information</h5>
                                     <div class="col-md-6">
-                                        <p class="fw-medium m-0">Tên sản phẩm</p>
-                                        <h6 class="h6 text-muted fw-normal m-0">{{ $data->name }}</h6>
+                                        <p class="fw-medium m-0">Tên sách</p>
+                                        <h6 class="h6 text-muted fw-normal m-0">{{ $book->name }}</h6>
                                     </div>
                                     <div class="col-md-6">
-                                        <p class="fw-medium m-0">Mô tả</p>
-                                        <p class="text-muted fw-normal m-0">{{ $data->description }}</p>
+                                        <p class="fw-medium m-0">Tên tác giả</p>
+                                        <h6 class="h6 text-muted fw-normal m-0">{{ $book->author }}</h6>
                                     </div>
                                     <div class="col-md-6">
-                                        <p class="fw-medium m-0">Giá</p>
-                                        <h6 class="h6 text-muted fw-normal m-0">
-                                            {{ number_format(round($data->price), 3, '.', ',') }} VNĐ</h6>
+                                        <p class="fw-medium m-0">Loại sách</p>
+                                        <h6 class="h6 text-muted fw-normal m-0">{{ $book->category }}</h6>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="fw-medium m-0">Năm xuất bản</p>
+                                        <h6 class="h6 text-muted fw-normal m-0">{{ $book->year }}</h6>
                                     </div>
                                     <div class="col-md-6">
                                         <p class="fw-medium m-0">Số lượng</p>
-                                        <h6 class="h6 text-muted fw-normal m-0">{{ $data->quantity }}</h6>
+                                        <h6 class="h6 text-muted fw-normal m-0">{{ $book->quantity }}</h6>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="d-flex justify-content-end align-items-center gap-2">
-                                            <a href="{{ route('products.index') }}" class="btn btn-secondary">Quay lại</a>
+                                            <a href="{{ route('books.index') }}" class="btn btn-secondary">Quay lại</a>
                                         </div>
                                     </div>
                                 </div>
