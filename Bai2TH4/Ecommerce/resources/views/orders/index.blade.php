@@ -26,14 +26,50 @@
                         <td class="text-center" scope="col">{{ $each->id }}</td>
                         <td class="text-start">{{ $each->customer->name }}</td>
                         <td class="text-start">{{ $each->order_time }}</td>
-                        <td class="text-center">{{ $each->status ? 'Chưa thanh toán' : 'Đã thanh toán'}}</td>
-                        <!-- <td class="text-center">
-                            <div class="d-flex align-items-center justify-content-center gap-2">
-                                <a class="btn btn-sm btn-outline-primary">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
+                        <td class="text-center">{{ $each->status ? 'Chưa thanh toán' : 'Đã thanh toán' }}</td>
+                        <td class="text-center">
+                            <a href="{{ route('orders.show', $each->id) }}"
+                                class="btn btn-sm btn-outline-primary">
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                            <a href="{{ route('orders.edit', $each->id) }}"
+                                class="btn btn-sm btn-outline-warning">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                                data-bs-target="#modalDelete{{ $each->id }}">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="modalDelete{{ $each->id }}" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1"
+                                aria-labelledby="modalDelete{{ $each->id }}Label" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="modalDelete{{ $each->id }}Label">
+                                                Xóa sản phẩm</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Bạn có chắc chắn về việc xóa sản phẩm này không?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Đóng</button>
+                                            <form action="{{ route('orders.destroy', $each->id) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE') 
+                                                <button type="submit" class="btn btn-primary">Xóa</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </td> -->
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -42,11 +78,11 @@
     </div>
 </div>
 @if ($data->hasPages())
-            <div class="card-footer">
-                <div class="paginate">
-                    {{-- Đây là phần hiển thị phân trang --}}
-                    {{ $data->links('pagination::bootstrap-5') }}
-                </div>
-            </div>
-        @endif
+<div class="card-footer">
+    <div class="paginate">
+        {{-- Đây là phần hiển thị phân trang --}}
+        {{ $data->links('pagination::bootstrap-5') }}
+    </div>
+</div>
+@endif
 @endsection

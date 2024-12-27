@@ -12,30 +12,34 @@
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Tên khách hàng</label>
-                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+                    <input type="text" name="name" id="name"
+                        class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
                     @error('name')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Địa chỉ</label>
-                    <input type="text" name="address" id="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}">
+                    <input type="text" name="address" id="address"
+                        class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}">
                     @error('address')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label">Số điện thoại</label>
-                    <input type="text" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}">
+                    <input type="text" name="phone" id="phone"
+                        class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}">
                     @error('phone')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
+                    <input type="email" name="email" id="email"
+                        class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
                     @error('email')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Thêm</button>

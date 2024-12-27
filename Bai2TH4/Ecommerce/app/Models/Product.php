@@ -8,4 +8,9 @@ class Product extends Model
 {
     public $timestamps = false;
     protected $fillable = ['name', 'description', 'price', 'quantity'];
+
+    public function order_detail()
+    {
+        return $this->hasMany(OrderDetail::class);
+    }
 }

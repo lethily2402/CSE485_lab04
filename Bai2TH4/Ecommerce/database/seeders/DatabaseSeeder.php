@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Models\Order;
 use App\Models\Customer;
+use App\Models\OrderDetail;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -19,6 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CustomerSeeder::class,
             OrderSeeder::class,
+            ProductSeeder::class,
+            OrderDetailSeeder::class,
         ]);
     }
 }

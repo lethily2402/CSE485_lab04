@@ -17,6 +17,12 @@
                     Products
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('orders.index') }}"
+                    class="nav-link{{ request()->routeIs('orders.*') ? ' active' : '' }}">
+                    Orders
+                </a>
+            </li>
         </ul>
     </header>
 </div>
